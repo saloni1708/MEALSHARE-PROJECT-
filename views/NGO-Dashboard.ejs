@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="\img\logoo.jpg" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600&display=swap');
+    </style>
+
+    <!-- //icon -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="/css/ngo_dashboard.css">
+
+    <style>
+        .progress-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: pop;
+            flex-direction: column;
+            background-color: #fff;
+
+        }
+
+        .progress-section .head {
+            text-align: center;
+        }
+
+        .progress-section .head_1 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-section .head_1 span {
+            color: #ff4732;
+        }
+
+        .progress-section .head_2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 3px;
+        }
+
+        .progress-section ul {
+            display: flex;
+        }
+
+        .progress-section ul li {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-section ul li .icon {
+            font-size: 35px;
+            color: #ff4732;
+            margin: 0 60px;
+        }
+
+        .progress-section ul li .text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ff4732;
+        }
+
+        /* Progress Div Css  */
+
+        .progress-section ul li .progress {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(68, 68, 68, 0.781);
+            margin: 14px 0;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-section .progress::after {
+            content: " ";
+            position: absolute;
+            width: 125px;
+            height: 5px;
+            background-color: rgba(68, 68, 68, 0.781);
+            right: 30px;
+        }
+
+        .progress-section .one::after {
+            width: 0;
+            height: 0;
+        }
+
+        .progress-section ul li .progress .uil {
+            display: none;
+        }
+
+        .progress-section ul li .progress p {
+            font-size: 13px;
+        }
+
+        /* Active Css  */
+
+        .progress-section ul li .active {
+            background-color: #ff4732;
+            display: grid;
+            place-items: center;
+        }
+
+        .progress-section li .active::after {
+            background-color: #ff4732;
+        }
+
+        .progress-section ul li .active p {
+            display: none;
+        }
+
+        .progress-section ul li .active .uil {
+            font-size: 20px;
+            display: flex;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 7%;
+        }
+
+        .status-form{
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            align-items: start;
+        }
+    </style>
+
+    <title>NGO DashBoard</title>
+</head>
+
+<body>
+    <section class="dashboard">
+        <div class="top">
+            <div class="menu-icon">
+                <input id="checkbox" type="checkbox"  onclick="toggleMenu()">
+                <label class="bars-toggle" for="checkbox">
+                    <div id="bar1" class="bars"></div>
+                    <div id="bar2" class="bars"></div>
+                    <div id="bar3" class="bars"></div>
+                </label>
+            </div>
+            <div class="dash">  DashBoard</div>
+            <div class="Left-name"> Welcome, <%= fullName %>!</div>
+
+
+        </div>
+        <hr class="top-border">
+        <section class="Profile-sec">
+            <div class="Donatebox">
+                <div class="NAME-block">
+                    <h4 class="User-Name">Full Name: <%= fullName %>
+                    </h4>
+                    <h4 class="User-Email">Email: <%= email %>
+                    </h4>
+                    <h4 class="User-Phone">Phone No: <%= phoneNo %>
+                    </h4>
+                    <h4 class="User-Adderss">Address: <%= address %>
+                    </h4>
+                </div>
+            </div>
+        </section>
+        <section class="NGO-sec" style="display: none;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Pending Donation Pickup : <%= (Donation.filter(user=>
+                    user.foodInventory.length !== 0 && user.approved == false)).length %></h2>
+            <div>
+                <ul class="donor-list">
+                    <% Donation.forEach(user=> { %>
+                        <% if(!user.approved && user.foodInventory.length !==0 ){%>
+                            <li class="donor-item" style="display: flex;
+                            flex-direction: column;">
+                                <div class="donor-details">
+                                    <p class="donor-name">Name: <%= user.fullName %>
+                                    </p>
+                                    <p class="donor-location"> Flat no: <%= user.flatNo %>
+                                    </p>
+                                    <p class="donor-location">Address-1: <%= user.addressLine1 %>
+                                    </p>
+                                    <p class="donor-location">Address-2: <%= user.addressLine2 %>
+                                    </p>
+                                    <p class="donor-location">City: <%= user.city %>
+                                    </p>
+                                    <p class="donor-location"> State:  <%= user.state %>
+                                    </p>
+                                    <p class="donor-location">Pin: <%= user.zip %>
+                                    </p>
+                                    <p class="donor-location">
+                                        <% user.foodInventory.forEach(item=> { %>
+                                            <p> Items: <%= item.foodItem %>
+                                            </p>
+                                            <p>Quantity: <%= item.quantity %>
+                                            </p>
+                                            <% }); %>
+                                    </p>
+                                </div>
+                                <div class="donor-actions">
+                                    <form action="/approve-donation/<%= user.email %>/<%= email %>" method="POST">
+                                        <button class="btn-accept">Accept</button>
+                                    </form>
+                                    <form action="/delete-details/<%= user.email %>/<%= email %>" method="POST">
+                                        <button class="btn-decline">Decline</button>
+                                    </form>
+
+                                </div>
+                            </li>
+                            <%}%>
+                                <% }); %>
+                </ul>
+            </div>
+
+            <!-- DISPLAYING ACCEPTED USER REQUEST -->
+            <h2 style="text-align: center; margin-bottom: 2rem;">Active Donation Pickup : <%= (Donation.filter(user=>
+                user.acceptedBy==fullName && user.foodInventory.length !== 0)).length %></h2>
+            <div>
+                <ul class="donor-list">
+                    <% Donation.forEach(user=> { %>
+                        <% if(user.acceptedBy==fullName && user.foodInventory.length !==0 ){%>
+                            <li class="donor-item">
+                                <div class="donor-details">
+                                    <p class="donor-name">Name: <%= user.fullName %>
+                                    </p>
+                                    <p class="donor-location"> Flat no: <%= user.flatNo %>
+                                    </p>
+                                    <p class="donor-location">Address-1: <%= user.addressLine1 %>
+                                    </p>
+                                    <p class="donor-location">Address-2: <%= user.addressLine2 %>
+                                    </p>
+                                    <p class="donor-location">City: <%= user.city %>
+                                    </p>
+                                    <p class="donor-location"> State: <%= user.state %>
+                                    </p>
+                                    <p class="donor-location">Pin: <%= user.zip %>
+                                    </p>
+                                    <p class="donor-location">
+                                        <% user.foodInventory.forEach(item=> { %>
+                                            <p> Items: <%= item.foodItem %>
+                                            </p>
+                                            <p>Quantity: <%= item.quantity %>
+                                            </p>
+                                            <% }); %>
+                                    </p>
+
+                                </div>
+                                <div class="donor-actions">
+                                    <form action="/delete-details/<%= user.email %>/<%= user.email %>" method="post">
+                                        <button class="btn-decline">Done</button>
+                                    </form>
+
+                                </div>
+                            </li>
+                            <div class="progress-section">
+                                <ul>
+                                    <li>
+                                        <i class="icon uil  uil-gift"></i>
+                                        <div class="progress one active">
+                                            <p>1</p>
+                                            <i class="uil uil-check"></i>
+                                        </div>
+                                        <p class="text">Packed</p>
+                                    </li>
+                                    <li>
+                                        <i class="icon uil uil-clipboard-notes"></i>
+                                        <div class="progress two <%= user.status === 'packed' ? '' : 'active' %>">
+                                            <p>2</p>
+                                            <i class="uil uil-check"></i>
+                                        </div>
+                                        <p class="text">Accepted</p>
+                                    </li>
+                                    <li>
+                                        <i class="icon uil uil-truck"></i>
+                                        <div class="progress three <%= user.status === 'onRoad' || user.status === 'delivered' ? 'active' : '' %>">
+                                            <p>3</p>
+                                            <i class="uil uil-check"></i>
+                                        </div>
+                                        <p class="text">On Road</p>
+                                    </li>
+                                    <li>
+                                        <i class="icon uil  uil-check-circle"></i>
+                                        <div class="progress four <%= user.status === 'delivered' ? 'active' : '' %>">
+                                            <p>4</p>
+                                            <i class="uil uil-check"></i>
+                                        </div>
+                                        <p class="text">Delivered</p>
+                                    </li>
+                                </ul>
+                            
+                            <form method="POST" action="/donation-status/<%= user.email %>" class="status-form">
+                                <select id="roadType" name="roadType">
+                                    <option value="accepted" selected>Accepted</option>
+                                    <option value="delivered">Delivered</option>
+                                </select>
+                                <button type="submit" class="button">Update</button>
+                            </form>
+                        </div>
+                            <%}%>
+                                <% }); %>
+                </ul>
+            </div>
+        </section>
+
+        <section class="donation" style="display: none;">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Donation Form</h2>
+                    <form id="donationForm" action="/add-details" method="post">
+                        <label for="flatNo">Flat/Door/Building No.:</label>
+                        <input type="text" id="flatNo" name="flatNo" required>
+                        <label for="addressLine1">Street/Locality:</label>
+                        <input type="text" id="addressLine1" name="addressLine1" required>
+                        <label for="addressLine2">Area/Landmark (Optional):</label>
+                        <input type="text" id="addressLine2" name="addressLine2">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                        <label for="state">State:</label>
+                        <select id="state" name="state" required>
+                            <option value="">Select State</option>
+                            <!-- Add options for states here -->
+                        </select>
+                        <label for="zip">ZIP/Postal Code:</label>
+                        <input type="text" id="zip" name="zip" required>
+
+                        <h3>Food Inventory</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Food Item</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" name="foodItem" required></td>
+                                    <td><input type="number" name="quantity" min="1" required></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="display: flex; justify-content: center;">
+                            <button type="button" class="button" onclick="addRow()">Add New Item</button>
+                            <button type="button" class="button" onclick="deleteRow()">Delete Row</button>
+                        </div>
+                        <div style="display: flex; justify-content: center;">
+                            <button class="button" type="submit">Donate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="Complains-sec" style="display: none; margin-top: 2rem;">
+            <div style="display: flex; justify-content: space-evenly;">
+                <form action="" method="post">
+                    <label for="Doner">Doner Name</label>
+                    <input type="text" name="Doner" id="">
+                    <label for="Complain">Issue</label>
+                    <input type="text" name="Issue" id="" placeholder="Issue">
+                </form>
+            </div>
+        </section>
+    </section>
+
+    <!-- Sliding menu -->
+
+    <nav class="sliding-menu">
+        <div class="logo-name">
+            <div class="logo-img">
+                <img src="\img\logoo.jpg" alt="logo">
+            </div>
+            <span class="logo_name">MealShare</span>
+        </div>
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="#">
+                        <i class="uil uil-user-circle"></i>
+                        <span id="Profile" class="link-name">Profie</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="uil uil-dna"></i>
+                        <span id="NGO" class="link-name">Donation Requests</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="uil uil-crockery"></i>
+                        <span id="Doners" class="link-name">Status Update</span>
+                    </a></li>
+                <li><a href="#">
+                        <i class="uil uil-comment-medical"></i>
+                        <span id="Complains" class="link-name">Raise Issues</span>
+                    </a></li>
+                <!-- <li><a href="#">
+                        <i class="uil uil-map-marker-question"></i>
+                        <span  id="Track" class="link-name">Track</span>
+                    </a></li> -->
+
+            </ul>
+            <ul class="logout-mode">
+                <li>
+                    <a href="/admin-logout">
+                        <i class="uil uil-sign-out-alt"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-wind-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.querySelector('.sliding-menu');
+            menu.style.width = menu.style.width === '25%' ? '0' : '25%';
+        }
+
+        const body = document.querySelector("body");
+        const modeToggle = body.querySelector(".mode-toggle");
+
+        modeToggle.addEventListener("click", () => {
+            body.classList.toggle("dark");
+        });
+
+
+        let Ngo = document.querySelector("#NGO");
+        let Doners = document.querySelector("#Doners");
+        let Profile = document.querySelector("#Profile");
+        let complains = document.querySelector("#Complains");
+        let NGO_sec = document.querySelector('.NGO-sec');
+        let Profile_sec = document.querySelector('.Profile-sec');
+        let Doners_sec = document.querySelector('.Doners-sec');
+        let complain_sec = document.querySelector('.Complains-sec');
+
+        Profile.addEventListener('click', (e) => {
+
+            e.preventDefault();
+            console.log("clicked")
+            Profile_sec.style.display = "flex";
+            NGO_sec.style.display = "none";
+            Doners_sec.style.display = "none";
+            complain_sec.style.display = "none";
+        })
+
+        Ngo.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("clicked")
+            Profile_sec.style.display = "none";
+            NGO_sec.style.display = "block";
+            Doners_sec.style.display = "none";
+            complain_sec.style.display = "none";
+        })
+        Doners.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("clicked")
+            Profile_sec.style.display = "none";
+            NGO_sec.style.display = "none";
+            Doners_sec.style.display = "block";
+            complain_sec.style.display = "none";
+        })
+
+        complains.addEventListener('click', (e) => {
+
+            e.preventDefault();
+            console.log("clicked")
+            Profile_sec.style.display = "none";
+            NGO_sec.style.display = "none";
+            Doners_sec.style.display = "none";
+            complain_sec.style.display = "block";
+
+        })
+
+        // const one = document.querySelector(".one");
+        // const two = document.querySelector(".two");
+        // const three = document.querySelector(".three");
+        // const four = document.querySelector(".four");
+
+        
+
+        // if (status == "packed") {
+        //     one.classList.add("active");
+        //     two.classList.remove("active");
+        //     three.classList.remove("active");
+        //     four.classList.remove("active");
+        //     console.log("donation info", donationInfo)
+        // }
+        // else if (status == "accepted") {
+        //     one.classList.add("active");
+        //     two.classList.add("active");
+        //     three.classList.remove("active");
+        //     four.classList.remove("active");
+        // }
+        // else if (status == "onRoad") {
+        //     one.classList.add("active");
+        //     two.classList.add("active");
+        //     three.classList.add("active");
+        //     four.classList.remove("active");
+        // }
+        // else {
+        //     one.classList.add("active");
+        //     two.classList.add("active");
+        //     three.classList.add("active");
+        //     four.classList.add("active");
+        // }
+
+    </script>
+</body>
+
+</html>

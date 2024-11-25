@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #ececec;
+}
+
+/* Dark Mode */
+
+.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.dark-mode #darkModeToggle {
+    background-color: #333; /* Dark background color */
+}
+
+.dark-mode #darkModeIcon {
+    color: #e0e0e0; /* Dark mode icon color */
+}
+
+/* Dark Mode Toggle Button - Hover */
+#darkModeToggle:hover {
+    background-color: #555; /* Dark background color on hover */
+}
+
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+    width: 50px;
+    height: 50px;
+    border: none; /* Remove border */
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+#darkModeIcon {
+    font-size: 24px;
+}
+
+.dark-mode .custom-box {
+    background-color: #333 !important;  /* Dark mode background color for the login container */
+    color: #e0e0e0; /* Dark mode text color for the login container */
+}
+
+/*------------ Login container ------------*/
+
+.box-area{
+    width: 930px;
+}
+
+/*------------ Right box ------------*/
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+/*------------ Custom Placeholder ------------*/
+
+::placeholder{
+    font-size: 16px;
+}
+
+.rounded-4{
+    border-radius: 20px;
+}
+.rounded-5{
+    border-radius: 30px;
+}
+
+
+/*------------ mobile------------*/
+
+@media only screen and (max-width: 768px){
+
+     .box-area{
+        margin: 0 10px;
+
+     }
+     .left-box{
+        height: 100px;
+        overflow: hidden;
+     }
+     .right-box{
+        padding: 20px;
+     }
+
+}

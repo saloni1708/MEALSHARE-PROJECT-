@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #008f34;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+  margin: 20px auto;
+  background-color: #f2f2f2;
+}
+
+.search-bar input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+  font-size: 18px;
+}
+
+.search-bar button[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.search-bar button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+#policies-container {
+  margin-top: 20px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.heading {
+  color: #008f34;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.content {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+#scrollToTopBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed position */
+  bottom: 20px; /* Place it at the bottom */
+  right: 30px; /* Place it 30px from the right */
+  z-index: 99; /* Ensure it is in front of other elements */
+  font-size: 18px; /* Increase font size */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #555; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#scrollToTopBtn:hover {
+  background-color: #333; /* Add a dark-grey background on hover */
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5), 0 0 25px rgb(255, 255, 255),
+    0 0 50px rgb(255, 255, 255), 0 0 200px rgb(255, 255, 255);
+}
+
+#scrollToTopBtn:active {
+  background-color: #111; /* Darken the button when clicked */
+}

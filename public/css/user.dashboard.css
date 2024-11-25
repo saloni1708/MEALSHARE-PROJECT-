@@ -1,0 +1,254 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600&display=swap');
+
+
+
+
+body{
+   min-height: 100vh;
+   background-color: var(--primary-color);
+}
+
+body.dark{
+    --primary-color:#3A3B3C;
+    --panel-color:#242526;
+    --text-color:#CCC;
+    --black-light-color:#CCC;
+    --broder-color:#4D4C4C;
+    --toggle-color:#FFF;
+    --box1-color:#3A3B3C;
+    --box2-color:#3A3B3C;
+    --box3-color:#CCC;
+
+}
+*{
+    margin :0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+
+}
+.Donatebox{
+    display: flex;
+
+    /* position: absolute; */
+    width: 35rem;
+    height: 25rem;
+    background-color: greenyellow;
+    justify-content: center;
+    align-self: center;
+    border-radius: 12%;
+}
+.NAME-block{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    border-radius: 7%;
+    padding-top: 5%;
+    padding-left: 10%;
+    height: 90%;
+    width: 90%;
+
+
+    background-color: white;
+}
+.top-border{
+    
+    margin-top: 1.5%;
+    border-style:double;
+    border-color: #F07070;
+    
+}
+.Left-name{
+    display: inline-block;
+    position: absolute;
+    right: 3%;
+    padding-top: 3px;
+}
+.top{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.middle{
+    display: flex;
+    padding-top: 15%;
+    justify-content: center;
+}
+.dashboard{
+
+    display: inline-block;
+    padding-left: 250px;      
+    height: 100vh;
+    width: 100%;
+  
+
+
+}
+/* colors */
+:root{
+    --primary-color:wheat;
+    --panel-color:#FFF;
+    --text-color:black;
+    --black-light-color:#F07070;
+    --broder-color:#e6e5e5;
+    --toggle-color:#DDD;
+    --box1-color:#4DA3FF;
+    --box2-color:#E7D1FC;
+    --box3-color:#fff;
+
+    /* transtions */
+    --tran-05:all 05s ease;
+    --tran-03:all 03s ease;
+    --tran-03:all 02s ease;
+
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding:10px 14px ;
+    background-color: var(--panel-color);
+ 
+}
+
+nav .logo-name{
+    display: flex;
+    align-items: center;
+}
+nav .logo-img{
+    display: flex;
+    justify-content: center;
+min-width: 45px;
+
+}
+nav .logo-img img{
+    width: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    }
+
+    nav  .logo-name .logo_name{
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--text-color);
+        margin-left: 14px;
+
+
+    }
+
+    nav .manu-items{
+       
+        margin-top: 40px;
+        height: calc(100% - 90px);
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+    }
+
+    .manu-items li{
+        list-style: none;
+    }
+
+    .manu-items li a{
+        display: flex;
+        align-items: center;
+
+        height: 50px;
+   text-decoration: none;
+   position: relative;
+    }
+
+    .nav-links li a:hover:before{
+        content: "";
+        position: absolute;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        left: -7px
+    }
+    
+    .manu-items li{
+        list-style: none;
+    }
+
+    .manu-items li a i{
+        font-size: 24px;
+  min-width: 45px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+color:var(--black-light-color);
+
+
+    }
+    .manu-items li a .link-name{
+        font-size: 18px;
+font-weight: 400;
+color:green;
+
+    }
+    .nav-links li a:hover  i,
+
+    .nav-links li a:hover .link-name{
+        color: var(--primary-color);
+    }
+
+    .manu-items .mode{
+        display: flex;
+        align-items: center;
+
+    }
+
+    .manu-items .mode-toggle{
+        position: absolute;
+        right: 14px;
+        height: 50px;
+        min-width: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .mode-toggle .switch{
+        position: relative;
+        display: inline-block;
+        height: 22px;
+        width: 40px;
+        border-radius: 25px;
+        background-color: var(--toggle-color);
+
+    }
+
+    .switch::before{
+        content: " ";
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 15px;
+        width: 15px;
+        background-color: var(--panel-color);
+        border-radius: 50%;
+        transition: var(--tran-03);
+    }
+
+
+body.dark .switch::before{
+    left: 20px;
+
+
+}
+
